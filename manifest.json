@@ -1,23 +1,30 @@
 {
   "manifest_version": 3,
-  "name": "Fraud-Shield Site Scanner",
+  "name": "Fraud Shield",
+  "description": "Detect and warn users about fraudulent websites in real-time.",
   "version": "1.0.0",
-  "description": "Automatically scans the current site content with Fraud-Shield backend.",
   "icons": {
-    "48": "icons/icon-48.png"
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": [
-    "scripting",
-    "activeTab"
-  ],
-  "host_permissions": [
-    "http://localhost:5000/*",
-    "https://your-production-backend.example/*"
-  ],
   "action": {
-    "default_title": "Scan this site with Fraud-Shield"
-  }
-}
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-scripts/scan.js"],
+      "run_at": "document_idle"
+    }
