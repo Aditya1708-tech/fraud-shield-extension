@@ -1,33 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "Fraud-Shield Checker",
+  "name": "Fraud-Shield Site Scanner",
   "version": "1.0.0",
-  "description": "Check SMS texts for fraud using the Fraud-Shield backend.",
+  "description": "Automatically scans the current site content with Fraud-Shield backend.",
   "icons": {
     "48": "icons/icon-48.png"
-  },
-  "action": {
-    "default_popup": "popup/popup.html",
-    "default_icon": "icons/icon-48.png"
   },
   "background": {
     "service_worker": "background.js"
   },
   "permissions": [
-    "storage"
+    "scripting",
+    "activeTab"
   ],
   "host_permissions": [
     "http://localhost:5000/*",
     "https://your-production-backend.example/*"
   ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://web.whatsapp.com/*",
-        "https://*.example-sms-site.com/*"
-      ],
-      "js": ["content-scripts/scan.js"],
-      "run_at": "document_idle"
-    }
-  ]
+  "action": {
+    "default_title": "Scan this site with Fraud-Shield"
+  }
 }
