@@ -28,3 +28,14 @@
       "js": ["content-scripts/scan.js"],
       "run_at": "document_idle"
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "libs/toastify.min.js",
+        "libs/toastify.min.css"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
